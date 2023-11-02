@@ -1,4 +1,6 @@
-﻿namespace DesktopNoteApp
+﻿using System.Windows.Forms;
+
+namespace DesktopNoteApp
 {
     partial class NoteApp
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -45,7 +48,10 @@
             loadBtn = new Button();
             delBtn = new Button();
             arrowExpand = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            toolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)notesList).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // noteBox
@@ -216,6 +222,19 @@
             arrowExpand.Text = "→";
             arrowExpand.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 48);
+            contextMenuStrip1.Text = "contextMenuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(180, 22);
+            toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
             // NoteApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -241,6 +260,7 @@
             Text = "NoteApp";
             Load += NoteApp_Load;
             ((System.ComponentModel.ISupportInitialize)notesList).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -261,6 +281,8 @@
         private System.Windows.Forms.Button loadBtn;
         private System.Windows.Forms.Button delBtn;
         private System.Windows.Forms.Label arrowExpand;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

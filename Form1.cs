@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+// Other class files
+using colorPicker;
 
 namespace DesktopNoteApp
 {
@@ -18,13 +20,16 @@ namespace DesktopNoteApp
 
         private SQLiteConnection conn;
         private int loadedNote = -1;
-
+        private ColorPicker colorPicker;
 
         public NoteApp()
         {
             InitializeComponent();
             conn = new SQLiteConnection("Data Source=NotesDB.db;Version=3;");
             conn.Open();
+
+            colorPicker = new ColorPicker(notesList);
+            
         }
 
 
@@ -39,8 +44,11 @@ namespace DesktopNoteApp
             adapter.Fill(notesTable);
 
             notesList.DataSource = notesTable; // Set the DataSource property of notesList to the notes DataTable
+            
+
             notesList.ClearSelection();
             notesList.CurrentCell = null;
+            colorPicker.AttachRightClickEvent();
         }
         private void RefreshNotesList()
         {
@@ -91,7 +99,7 @@ namespace DesktopNoteApp
                 newRow["Note"] = noteBox.Text;
                 newRow["Info"] = infoBox.Text;
                 notesTable.Rows.Add(newRow);
-                
+
                 string insertQuery = "INSERT INTO Notes (Note, Info) VALUES (@Note, @Info)";
                 SQLiteCommand insertCmd = new SQLiteCommand(insertQuery, conn);
                 insertCmd.Parameters.AddWithValue("@Note", noteBox.Text);
@@ -129,7 +137,7 @@ namespace DesktopNoteApp
             }
             notesList.CurrentCell = null;
         }
-        
+
         private void delBtn_Click(object sender, EventArgs e)
         {
             int rowIndex = notesList.CurrentCell?.RowIndex ?? -1;

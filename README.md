@@ -8,6 +8,9 @@ This is a basic note taking app written in Windows Forms. The project was conduc
 - Uses SQLite for data storage
 - Comes with additional textboxes for temporary note taking (WIP)
 
+![Guide](https://i.imgur.com/xhjMo8G.gif)
+![Guide](https://i.imgur.com/x1oU7TG.png)
+
 <br>
 
 ---
@@ -42,7 +45,7 @@ Without modifying the specified filepath, a database file (**"NotesDB.db"**) nee
 ## Usage
 <br>
 
-- Free to use for anyone interested - as simple as it gets!
+- Free to use under the MIT License
 
 
 <br>
